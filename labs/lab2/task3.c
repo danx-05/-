@@ -12,7 +12,7 @@ int main()
     float arr[size];
     
     for (int i = 0; i < size; i++){
-        arr[i] = (float)rand()/RAND_MAX * pow(-1,rand()%2);
+        arr[i] = (float)rand()/RAND_MAX;
         printf("%f ", arr[i]);
         
     }
