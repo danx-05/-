@@ -4,7 +4,6 @@ int main() {
     char str[] = "\nНовая строчка";
     file = fopen("a2", "a");
     if (file == NULL) {
-        perror("Ошибка при открытии файла");
         return 1;
     }
     fprintf(file, "%s", str);
