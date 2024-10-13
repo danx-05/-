@@ -29,13 +29,13 @@ int main()
 {
     FILE *inputFile;
     FILE *outputFile;
-    inputFile = fopen("inputFile.txt", "r");
+    inputFile = fopen("inputFile", "r");
     if (inputFile == NULL)
     {
         printf("Ошибка при открытии входного файла.\n");
         return 1;
     }
-    int countString = 1;
+    int countString = 0;
     char ch;
     while ((ch = fgetc(inputFile)) != EOF)
     {
@@ -47,14 +47,12 @@ int main()
     struct goods shop[countString];
     int i = 0;
     fseek(inputFile, 0, SEEK_SET);
-    
     while (fscanf(inputFile, "%s %f", shop[i].name, &shop[i].price) != EOF)
     {
-        printf("%s\n", shop[i].name);
         i++;
     }
     Sort(shop, countString);
-    outputFile = fopen("output.txt", "w");
+    outputFile = fopen("output", "w");
     if (outputFile == NULL)
     {
         printf("Ошибка при открытии выходного файла.\n");
