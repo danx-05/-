@@ -66,7 +66,5 @@ int main()
     }
     fclose(outputFile);
     fclose(inputFile);
-    
-    
     return 0;
 }
