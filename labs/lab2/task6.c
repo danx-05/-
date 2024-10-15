@@ -38,7 +38,11 @@ void push(struct myStack *stack, int value)
 }
 int pop(struct myStack *stack)
 {
-    if (!stack || !stack->pointer) return 0;
+    if (!stack || !stack->pointer){
+        printf("Stack is empty!");
+        return 1;
+    }
+    
     char value = stack->pointer->value;
     struct node *del = stack->pointer;
     stack->pointer = stack->pointer->next;
@@ -48,7 +52,10 @@ int pop(struct myStack *stack)
 }
 int peek(struct myStack *stack)
 {
-    if (!stack || !stack->pointer) return 0;
+    if (!stack || !stack->pointer){
+        printf("Stack is empty!");
+        return 1;
+    } 
     return stack->pointer->value;
 }
 int stack_size(struct myStack *stack)
@@ -67,8 +74,9 @@ int main()
     for (int i = 0; i <= 10; i++){
         push(st,i);
     }
+    
     printf("%d\n", peek(st));
-    for (int i = 0; i <= 5; i++){
+    for (int i = 0; i <= 11; i++){
         printf("%d ", pop(st));
     }
     return 0;
