@@ -24,7 +24,6 @@ void error() {
     printf("Error\n");
     exit(1);
 }
-
 int main() {
     printf("Введите инфиксное выражение: ");
     char buffer[100];
