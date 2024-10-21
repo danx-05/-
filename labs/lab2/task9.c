@@ -42,13 +42,13 @@ void exprRest() {
     if (l == '+') {
         match('+');
         term();
-        exprRest();
         printf("+");
+        exprRest();
     } else if (l == '-') {
         match('-');
         term();
-        exprRest();
         printf("-");
+        exprRest();
     }
 }
 void term() {
@@ -59,13 +59,13 @@ void termRest() {
     if (l == '*') {
         match('*');
         factor();
-        termRest();
         printf("*");
+        termRest();
     } else if (l == '/') {
         match('/');
         factor();
-        termRest();
         printf("/");
+        termRest();
     }
 }
 void factor() {
