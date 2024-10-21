@@ -11,19 +11,17 @@ void swap(struct goods *xp, struct goods *yp)
     *xp = *yp;
     *yp = temp;
 }
-void Sort(struct goods *mas, int countString)
-{
-    int i, j;
-    for (i = 0; i < countString - 1; i++)
-    {
-        for (j = 0; j < countString - i - 1; j++)
-        {
-            if (mas[j].price > mas[j + 1].price)
-            {
-                swap(&mas[j], &mas[j + 1]);
+void Sort(struct goods *mac, int n) {
+    int flag;
+    do {
+        flag = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (mac[i].price > mac[i + 1].price) {
+                swap(&mac[i], &mac[i + 1]);
+                flag = 1;
             }
         }
-    }
+    } while(flag);
 }
 int main()
 {
