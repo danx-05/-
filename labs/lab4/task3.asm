@@ -23,6 +23,6 @@ PRINT
 HALT
 
 STR .STRINGZ "Enter a string: "
-BUFFER    .BLKW  1024
+BUFFER .BLKW  1024
 
 .END
