@@ -16,8 +16,10 @@ void yyerror(const char* s) {
 %type <number> expr
 
 %%
-stmts:	stmt
-	| stmts stmt
+stmts:	%empty
+	| stmts stmt {  printf("X .FILL #1\n\n");
+			printf(".ORIG x3000\n");
+			printf("LD R1, X\n;"); }
 	;
 
 stmt:	equal
@@ -37,28 +39,28 @@ expr:	NUM
 	;
 
 if: IF '(' cond ')' '{' stmt '}'
-	{ printf("  END\n");
-	  printf("HALT\n");
-	  printf("\n"); }
+	{ printf("END\n");
+	  printf("HALT\n");}
 	;
 
 while: WHILE '(' cond ')' '{' stmt '}'
 	{ printf("BRnzp LOOP\n"); 
 	  printf("  END\n"); 
-	  printf("HALT\n"); 
-	  printf("\n"); }
+	  printf("HALT\n");}
+	| WHILE '(' cond ')'
+	{ printf("BRnzp LOOP\n");
+          printf("  END\n");
+          printf("HALT\n");}
 	;
 
 for: FOR '(' equal ';' cond ';' expr ')''{' stmts '}'
 	{ printf("BRnzp LOOP\n");
 	 printf("  END\n"); 
-	 printf("HALT\n"); 
-	 printf("\n"); }
+	 printf("HALT\n");}
 	| FOR '(' equal ';' cond ';' expr ')' '{' '}'
         { printf("BRnzp LOOP\n"); 
           printf("END\n"); 
-          printf("HALT\n"); 
-          printf("\n"); }
+          printf("HALT\n");}
 	;
 
 print: PRINT '(' VARIABLE ')' { printf("LD R0, R1, #0\nOUT\n"); }
@@ -78,6 +80,5 @@ int main() {
     printf(".ORIG x3000\n");
     printf("LD R1, X\n;");
     yyparse();
-    printf("X .FILL #1\n;");
     return 0;
 }
