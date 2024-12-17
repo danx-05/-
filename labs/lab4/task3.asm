@@ -1,5 +1,5 @@
 .ORIG x3000
-START   LEA R0, STR
+START   LEA R0, STRING
         PUTS
         
         LEA R1, BUFFER         ; адрес начала буфера для строки
@@ -22,7 +22,7 @@ PRINT
         
 HALT
 
-STR .STRINGZ "Enter a string: "
+STRING .STRINGZ "Enter a string: "
 BUFFER .BLKW  1024
 
 .END
