@@ -1,16 +1,16 @@
 .ORIG x3000
 
-AND R2, R2, #0			; Сброс счетчика
-LEA R1, BUFFER			; Адрес буфера для ввода
-LD R4, ASCII_ZERO		; Код символа '0'
-LD R5, NEG_ASCII_ZERO		; Код символа '-0'
+AND R2, R2, #0
+LEA R1, BUFFER
+LD R4, ASCII_ZERO
+LD R5, NEG_ASCII_ZERO
 
 LEA R0, MSG			; Адрес приглашения к вводу
 PUTS 				; Вывод приглашения к вводу
 
 READ_LOOP
-	GETC			; Получение символа с ввода
-	OUT			; Вывод символа
+	GETC
+	OUT
 
 	ADD R2, R2, #1		; Увеличиваем счетчик
 
